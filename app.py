@@ -120,6 +120,18 @@ st.markdown(
         border: 1px solid #000;
     }
 
+    /* Botão "Processar vídeo" em cinza */
+    .stButton > button {
+        background: #808080 !important;
+        border: 1px solid #808080 !important;
+        color: #fff !important;
+    }
+    .stButton > button:hover {
+        background: #5a5a5a !important;
+        border: 1px solid #5a5a5a !important;
+        color: #fff !important;
+    }
+
     [data-testid="stFileUploaderDropzone"] {
         background: #fff;
         border: 1px dashed #000;
