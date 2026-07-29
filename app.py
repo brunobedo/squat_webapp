@@ -59,7 +59,7 @@ st.markdown(
     .app-subtitle {
         font-size: 0.95rem;
         font-weight: 300;
-        color: #555;
+        color: #000;
         margin-bottom: 0.5rem;
     }
     .section-label {
@@ -89,9 +89,19 @@ st.markdown(
         border: 1px solid #000;
     }
 
+    [data-testid="stFileUploaderDropzone"] {
+        background: #fff;
+        border: 1px dashed #000;
+        border-radius: 0;
+    }
+
+    [data-testid="stCaptionContainer"], .stCaption, small {
+        color: #000 !important;
+    }
+
     .citacao-box {
-        border: 1px solid #e5e5e5;
-        background: #fafafa;
+        border: 1px solid #000;
+        background: #fff;
         padding: 1.4rem 1.6rem;
         margin-top: 2.5rem;
     }
@@ -106,7 +116,7 @@ st.markdown(
     .citacao-texto {
         font-size: 0.85rem;
         line-height: 1.65;
-        color: #333;
+        color: #000;
         margin-bottom: 1rem;
     }
     .citacao-links {
@@ -285,7 +295,7 @@ _TEMPLATE_PLAYER = Template(
     <div id="chart" style="width:100%; height:${altura}px;"></div>
   </div>
 </div>
-<div id="leitura" style="margin-top:10px; font-size:13.5px; color:#111; letter-spacing:0.02em;"></div>
+<div id="leitura" style="margin-top:10px; font-size:13.5px; color:#000; letter-spacing:0.02em;"></div>
 <script>
   const knee = ${knee};
   const hip = ${hip};
@@ -305,7 +315,7 @@ _TEMPLATE_PLAYER = Template(
   ];
 
   const layout = {
-    font: {family: 'Inter, Helvetica, sans-serif', color: '#111111', size: 12},
+    font: {family: 'Inter, Helvetica, sans-serif', color: '#000000', size: 12},
     xaxis: {title: 'Quadro', gridcolor: '#eeeeee', range: [0, n - 1], zeroline: false},
     yaxis: {title: 'Ângulo (graus)', gridcolor: '#eeeeee', range: [0, 185], zeroline: false},
     legend: {orientation: 'h', y: 1.06, x: 1, xanchor: 'right'},
