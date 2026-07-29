@@ -29,7 +29,7 @@ from src.maintools import calculate_angle
 # ----------------------------------------------------------------------------
 
 st.set_page_config(
-    page_title="Análise Markerless do Agachamento",
+    page_title="Análise Markerless dos Membros Inferiores (ex: agachamento)",
     page_icon="◾",
     layout="wide",
 )
