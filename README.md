@@ -111,9 +111,9 @@ The app runs on Streamlit Community Cloud at
 
 - Select **Python 3.11** in "Advanced settings" when creating the app — `mediapipe`
   has no wheels for the newest Python versions.
-- `requirements.txt` uses `opencv-python-headless`, so no system GUI libraries are
-  required.
-- `imageio-ffmpeg` ships its own ffmpeg binary — no `packages.txt` needed.
+- `packages.txt` installs `libgl1` and `libglib2.0-0`, required by
+  `opencv-contrib-python` (pulled in as a `mediapipe` dependency).
+- `imageio-ffmpeg` ships its own ffmpeg binary, so no system ffmpeg is needed.
 
 ## Citing
 
