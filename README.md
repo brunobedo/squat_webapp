@@ -4,12 +4,14 @@
 
 **Markerless 2D squat analysis in the browser — hip and knee kinematics from a single sagittal-view video.**
 
+[![Live app](https://img.shields.io/badge/Live%20app-squatweb.streamlit.app-black?logo=streamlit&logoColor=white)](https://squatweb.streamlit.app)
 [![Python](https://img.shields.io/badge/Python-3.11-black?logo=python&logoColor=white)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-app-black?logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![MediaPipe](https://img.shields.io/badge/MediaPipe-Pose-black?logo=google&logoColor=white)](https://developers.google.com/mediapipe)
 [![Paper](https://img.shields.io/badge/DOI-10.3390%2Fbiomechanics6010001-black)](https://doi.org/10.3390/biomechanics6010001)
 
 *Built for biomechanists. Minimalist, black & white, in Portuguese (pt-BR).*
+
+**Try it now → [squatweb.streamlit.app](https://squatweb.streamlit.app)**
 
 </div>
 
@@ -49,7 +51,20 @@ MediaPipe Pose  ──►  shoulder / hip / knee / ankle landmarks (per frame)
 Frames without a detected pose are stored as `NaN` in the CSV (keeping frame indices
 aligned with the video) and linearly interpolated only for the velocity computation.
 
-## Quickstart
+## Using the app
+
+No installation required — the app is live at
+**[squatweb.streamlit.app](https://squatweb.streamlit.app)**. Pick a sample video
+(or upload yours), choose the body side facing the camera, and click
+**Processar vídeo**.
+
+### Recording recommendations
+
+- Camera perpendicular to the sagittal plane (true side view), tripod if possible.
+- Whole body visible during the entire movement — shoulder, hip, knee and ankle.
+- Good lighting and contrast between the subject and the background.
+
+## Running locally
 
 ```bash
 git clone https://github.com/brunobedo/squat_webapp.git
@@ -63,16 +78,9 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Open http://localhost:8501, pick a sample video (or upload yours), and click
-**Processar vídeo**.
+Then open http://localhost:8501.
 
-### Recording recommendations
-
-- Camera perpendicular to the sagittal plane (true side view), tripod if possible.
-- Whole body visible during the entire movement — shoulder, hip, knee and ankle.
-- Good lighting and contrast between the subject and the background.
-
-## Command-line usage
+### Command-line usage
 
 The original batch pipeline is still available:
 
@@ -98,8 +106,13 @@ squat_webapp/
 
 ## Deployment notes
 
-- `requirements.txt` uses `opencv-python-headless`, so the app deploys cleanly to
-  Streamlit Community Cloud (no system GUI libraries required).
+The app runs on Streamlit Community Cloud at
+[squatweb.streamlit.app](https://squatweb.streamlit.app). If you deploy your own fork:
+
+- Select **Python 3.11** in "Advanced settings" when creating the app — `mediapipe`
+  has no wheels for the newest Python versions.
+- `requirements.txt` uses `opencv-python-headless`, so no system GUI libraries are
+  required.
 - `imageio-ffmpeg` ships its own ffmpeg binary — no `packages.txt` needed.
 
 ## Citing
