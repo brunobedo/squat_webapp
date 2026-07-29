@@ -44,6 +44,37 @@ st.markdown(
     }
     #MainMenu, footer, header {visibility: hidden;}
 
+    /* Trava o tema claro mesmo se o navegador preferir modo escuro */
+    .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
+        background: #ffffff !important;
+    }
+    .stApp p, .stApp label, .stApp span, .stApp li,
+    .stApp h1, .stApp h2, .stApp h3, .stApp h4,
+    [data-testid="stWidgetLabel"] p, [data-testid="stMarkdownContainer"] p {
+        color: #000000 !important;
+    }
+    [data-testid="stFileUploaderDropzoneInstructions"] span,
+    [data-testid="stFileUploaderDropzoneInstructions"] small {
+        color: #000000 !important;
+    }
+    [data-testid="stAlertContainer"] {
+        background: #ffffff !important;
+        border: 1px solid #000000;
+        border-radius: 0;
+    }
+    [data-testid="stAlertContainer"] p {color: #000000 !important;}
+    [data-testid="stExpander"] details {
+        background: #ffffff;
+        border: 1px solid #000000;
+        border-radius: 0;
+    }
+    [data-baseweb="select"] > div {
+        background: #ffffff !important;
+        border-color: #000000 !important;
+        border-radius: 0;
+        color: #000000 !important;
+    }
+
     .block-container {
         max-width: 1200px;
         padding-top: 3rem;
