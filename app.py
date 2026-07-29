@@ -316,7 +316,7 @@ _TEMPLATE_PLAYER = Template(
 <style>
   body { margin: 0; font-family: 'Inter', 'Helvetica Neue', sans-serif; }
 </style>
-<div style="display:flex; gap:16px; align-items:stretch;">
+<div id="wrap" style="display:flex; gap:16px; align-items:stretch;">
   <div style="flex:1; min-width:0; border:1px solid #e5e5e5; background:#000;">
     <video id="vid" controls muted playsinline
            style="width:100%; height:${altura}px; object-fit:contain; display:block; background:#000;">
@@ -388,6 +388,33 @@ _TEMPLATE_PLAYER = Template(
     const f = Math.round(ev.points[0].x);
     vid.currentTime = f / fps;
   });
+
+  // Em telas estreitas (celular), empilha vídeo e gráfico verticalmente
+  const ALTURA = ${altura};
+  const ALTURA_MOBILE = 300;
+  const wrap = document.getElementById('wrap');
+  let estreitoAtual = null;
+
+  function ajustarLayout() {
+    const estreito = window.innerWidth < 640;
+    if (estreito === estreitoAtual) return;
+    estreitoAtual = estreito;
+
+    wrap.style.flexDirection = estreito ? 'column' : 'row';
+    const h = estreito ? ALTURA_MOBILE : ALTURA;
+    vid.style.height = h + 'px';
+    chart.style.height = h + 'px';
+
+    // Ajusta a altura do iframe do componente no Streamlit
+    if (window.frameElement) {
+      const total = estreito ? (2 * ALTURA_MOBILE + 16) : ALTURA;
+      window.frameElement.style.height = (total + 55) + 'px';
+    }
+    Plotly.Plots.resize(chart);
+  }
+
+  window.addEventListener('resize', ajustarLayout);
+  ajustarLayout();
 </script>
 """
 )
