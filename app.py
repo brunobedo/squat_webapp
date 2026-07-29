@@ -105,28 +105,17 @@ st.markdown(
     }
     hr {border-color: #e5e5e5;}
 
+    /* Botões de ação e de download em cinza */
     .stButton > button, .stDownloadButton > button {
-        background: #000;
-        color: #fff;
-        border: 1px solid #000;
+        background: #808080 !important;
+        color: #fff !important;
+        border: 1px solid #808080 !important;
         border-radius: 0;
         padding: 0.55rem 1.6rem;
         font-weight: 500;
         letter-spacing: 0.05em;
     }
     .stButton > button:hover, .stDownloadButton > button:hover {
-        background: #fff;
-        color: #000;
-        border: 1px solid #000;
-    }
-
-    /* Botão "Processar vídeo" em cinza */
-    .stButton > button {
-        background: #808080 !important;
-        border: 1px solid #808080 !important;
-        color: #fff !important;
-    }
-    .stButton > button:hover {
         background: #5a5a5a !important;
         border: 1px solid #5a5a5a !important;
         color: #fff !important;
