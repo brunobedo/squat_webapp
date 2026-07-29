@@ -395,6 +395,20 @@ _TEMPLATE_PLAYER = Template(
   const wrap = document.getElementById('wrap');
   let estreitoAtual = null;
 
+  function alturaTotal() {
+    return (estreitoAtual ? 2 * ALTURA_MOBILE + 16 : ALTURA) + 55;
+  }
+
+  // O Streamlit reaplica a altura original do iframe; forçamos a nossa
+  // via atributo e estilo com !important, reaplicados periodicamente.
+  function fixarAlturaIframe() {
+    const iframe = window.frameElement;
+    if (!iframe || estreitoAtual === null) return;
+    const total = alturaTotal();
+    iframe.setAttribute('height', total);
+    iframe.style.setProperty('height', total + 'px', 'important');
+  }
+
   function ajustarLayout() {
     const estreito = window.innerWidth < 640;
     if (estreito === estreitoAtual) return;
@@ -405,16 +419,13 @@ _TEMPLATE_PLAYER = Template(
     vid.style.height = h + 'px';
     chart.style.height = h + 'px';
 
-    // Ajusta a altura do iframe do componente no Streamlit
-    if (window.frameElement) {
-      const total = estreito ? (2 * ALTURA_MOBILE + 16) : ALTURA;
-      window.frameElement.style.height = (total + 55) + 'px';
-    }
+    fixarAlturaIframe();
     Plotly.Plots.resize(chart);
   }
 
   window.addEventListener('resize', ajustarLayout);
   ajustarLayout();
+  setInterval(fixarAlturaIframe, 500);
 </script>
 """
 )
