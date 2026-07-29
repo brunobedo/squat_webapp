@@ -448,7 +448,7 @@ def calcular_metricas(df, fps):
 # Interface
 # ----------------------------------------------------------------------------
 
-st.markdown('<div class="app-title">dos Membros Inferiores (ex: agachamento)</div>', unsafe_allow_html=True)
+st.markdown('<div class="app-title">Análise Markerless dos Membros Inferiores (ex: agachamento)</div>', unsafe_allow_html=True)
 st.markdown(
     '<div class="app-subtitle">Cinemática 2D de quadril e joelho a partir de vídeo '
     "na vista sagital, sem marcadores — MediaPipe Pose.</div>",
